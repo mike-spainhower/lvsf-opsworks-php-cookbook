@@ -1,6 +1,6 @@
 name             'lvsf-opsworks-php-cookbook'
-maintainer       'YOUR_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'Spain Train'
+maintainer_email 'spain@livesafemobile.com'
 license          'All rights reserved'
 description      'Installs/Configures lvsf-opsworks-php-cookbook'
 long_description 'Installs/Configures lvsf-opsworks-php-cookbook'
