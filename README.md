@@ -1,10 +1,26 @@
 # lvsf-opsworks-php-cookbook-cookbook
 
-TODO: Enter the cookbook description here.
+Cookbook that brings up any of our PHP apps.
+
+## Usage
+
+Be sure you have kitchen and chef fully set up first - https://github.com/LiveSafe/livesafe-tech-wiki/wiki/Get-started-with-Chef
+
+
+Install all the deps:
+```bash
+bundle install
+berks install
+```
+
+Bring up the VM with Kitchen:
+```bash
+bundle exec kitchen converge
+```
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+Ubuntu 14.04
 
 ## Attributes
 
@@ -39,4 +55,5 @@ Include `lvsf-opsworks-php-cookbook` in your node's `run_list`:
 
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+LiveSafe
+MIT License
