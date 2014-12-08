@@ -6,6 +6,6 @@ description      'Installs/Configures lvsf-opsworks-php-cookbook'
 long_description 'Installs/Configures lvsf-opsworks-php-cookbook'
 version          '0.1.0'
 
-depends "apt"
-depends "php5-fpm"
-depends "nginx"
+depends 'apt'
+depends 'php5-fpm'
+depends 'nginx'

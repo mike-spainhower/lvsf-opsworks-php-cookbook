@@ -5,14 +5,22 @@
 # Copyright (C) 2014 LiveSafe
 #
 
+include_recipe 'php5-fpm'
+include_recipe 'php5-fpm::install'
+include_recipe 'php5-fpm::create_user'
+include_recipe 'php5-fpm::configure_pools'
+include_recipe 'php5-fpm::configure_fpm'
+
 include_recipe 'apt'
 include_recipe 'nginx'
 
 nginx_user = 'www-data'
 
 # For testing
-package 'vim' do
-  action :install
+%w(vim curl git).each do |pkg|
+  package pkg do
+    action :install
+  end
 end
 
 # setup php fpm
@@ -37,13 +45,29 @@ link "#{node['nginx']['dir']}/sites-enabled/php-app" do
   to "#{node['nginx']['dir']}/sites-available/php-app"
 end
 
-link "#{node['nginx']['dir']}/sites-enabled/default" do
-  action :delete
+[
+  "#{node['nginx']['dir']}/sites-enabled/default",
+  "#{node['nginx']['dir']}/sites-enabled/000-default"
+].each do |symlink_path|
+  link symlink_path do
+    action :delete
+  end
 end
+
+# link "#{node['nginx']['dir']}/sites-enabled/default" do
+#   action :delete
+# end
+#
+# link "#{node['nginx']['dir']}/sites-enabled/000-default" do
+#   action :delete
+# end
 
 # basic app for testing
 template '/usr/share/nginx/www/info.php' do
   source 'info.php.erb'
+  owner nginx_user
+  group nginx_user
+  mode '0770'
 end
 
 # restart services
