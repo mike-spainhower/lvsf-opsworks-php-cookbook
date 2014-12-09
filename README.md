@@ -1,4 +1,4 @@
-# lvsf-opsworks-php-cookbook-cookbook
+# lvsf-opsworks-php-cookbook
 
 Cookbook that brings up any of our PHP apps.
 
