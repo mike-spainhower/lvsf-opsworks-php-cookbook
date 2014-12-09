@@ -8,4 +8,5 @@ version          '0.1.0'
 
 depends 'apt'
 depends 'php5-fpm'
+depends 'ohai'
 depends 'nginx'
