@@ -12,6 +12,7 @@ include_recipe 'php5-fpm::configure_pools'
 include_recipe 'php5-fpm::configure_fpm'
 
 include_recipe 'apt'
+include_recipe 'ohai'
 include_recipe 'nginx'
 
 nginx_user = 'www-data'
