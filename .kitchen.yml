@@ -17,4 +17,9 @@ suites:
     run_list: 
       - recipe[lvsf-opsworks-php-cookbook::default]
       - recipe[test-helper::default]
+      # - recipe[lvsf-opsworks-php-cookbook::deploy_local]
     attributes:
+      deploy_local:
+        lvsf_php_services:
+          git_url: 'git@github.com:LiveSafe/php-web-services.git'
+          git_rev: 'master'

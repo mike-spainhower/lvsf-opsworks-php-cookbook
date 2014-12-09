@@ -4,6 +4,7 @@ metadata
 
 cookbook 'apt', '~> 2.6.0'
 cookbook 'php5-fpm', '~> 0.3.2'
+cookbook 'ohai', '~> 2.0.1'
 cookbook 'nginx', '~> 2.7.4'
 
 group :integration do
