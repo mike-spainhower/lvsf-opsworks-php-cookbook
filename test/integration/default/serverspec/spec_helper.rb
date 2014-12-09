@@ -1,6 +1,11 @@
 require 'serverspec'
+require 'pathname'
+require 'json'
 
 set :backend, :exec
 
-include SpecInfra::Helper::Exec
-include SpecInfra::Helper::DetectOS
+# SpecHelper - access test helpers
+class SpecHelper
+  class << self; attr_accessor :node end
+  @node = ::JSON.parse(File.read('/tmp/serverspec/node.json'))
+end

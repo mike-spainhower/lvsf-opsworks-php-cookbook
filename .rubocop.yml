@@ -1,0 +1,11 @@
+Metrics/LineLength:
+  Max: 120
+
+SingleSpaceBeforeFirstArg:
+  Exclude:
+    - '**/metadata.rb'
+
+AllCops:
+  Exclude:
+    - 'Vagrantfile'
+    - 'Thorfile'
