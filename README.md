@@ -2,7 +2,9 @@
 
 Cookbook that brings up any of our PHP apps.
 
-## Usage
+## Run Apps Locally
+
+### Prep
 
 Be sure you have kitchen and chef fully set up first - https://github.com/LiveSafe/livesafe-tech-wiki/wiki/Get-started-with-Chef
 
@@ -13,12 +15,35 @@ bundle install
 berks install
 ```
 
-Bring up the VM with Kitchen:
+### Run test suite
+
+```bash
+bundle exec strainer test --fail-fast
+```
+
+You can also check out `Strainerfile` to see what commands get run and run them manually.
+
+
+### Deploy apps locally
+
+In `.kitchen.yml`:
+
+1. Uncomment the line with `- recipe[lvsf-opsworks-php-cookbook::deploy_local]`
+1. Under `attributes -> deploy_local` add a hash for each app you wish to deploy.  E.g., if you want to deploy the php web services
+```yml
+    attributes:
+      deploy_local:
+        lvsf_php_services:
+          git_url: 'git@github.com:LiveSafe/php-web-services.git'
+          git_rev: 'master'
+```
+Then converge!
+
 ```bash
 bundle exec kitchen converge
 ```
 
-## Supported Platforms
+## Tested/Supported Platforms
 
 Ubuntu 14.04
 
@@ -30,12 +55,6 @@ Ubuntu 14.04
     <th>Type</th>
     <th>Description</th>
     <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['lvsf-opsworks-php-cookbook']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
   </tr>
 </table>
 
