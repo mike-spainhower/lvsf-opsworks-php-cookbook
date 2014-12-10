@@ -5,6 +5,8 @@
 # Copyright (C) 2014 LiveSafe
 #
 
+include_recipe 'ohai'
+
 include_recipe 'php5-fpm'
 include_recipe 'php5-fpm::install'
 include_recipe 'php5-fpm::create_user'
@@ -12,10 +14,7 @@ include_recipe 'php5-fpm::configure_pools'
 include_recipe 'php5-fpm::configure_fpm'
 
 include_recipe 'apt'
-include_recipe 'ohai'
 include_recipe 'nginx'
-
-nginx_user = 'www-data'
 
 # For testing
 %w(vim curl git).each do |pkg|
@@ -33,7 +32,7 @@ end
 
 # setup nginx stuff
 directory '/usr/share/nginx/www' do
-  owner nginx_user
+  owner node['lvsf_opsworks_php']['nginx_user']
   action :create
 end
 
@@ -55,19 +54,11 @@ end
   end
 end
 
-# link "#{node['nginx']['dir']}/sites-enabled/default" do
-#   action :delete
-# end
-#
-# link "#{node['nginx']['dir']}/sites-enabled/000-default" do
-#   action :delete
-# end
-
 # basic app for testing
 template '/usr/share/nginx/www/info.php' do
   source 'info.php.erb'
-  owner nginx_user
-  group nginx_user
+  owner node['lvsf_opsworks_php']['nginx_user']
+  group node['lvsf_opsworks_php']['nginx_user']
   mode '0770'
 end
 
