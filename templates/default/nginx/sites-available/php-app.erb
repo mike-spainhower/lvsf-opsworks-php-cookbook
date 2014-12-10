@@ -1,7 +1,7 @@
 server {
     listen 80;
     
-    root /usr/share/nginx/www;
+    root <%= node['lvsf_opsworks_php']['php_app_srv_dir'] %>;
     index index.php index.html index.htm;
     
     server_name dev-services.livesafemobile.com;

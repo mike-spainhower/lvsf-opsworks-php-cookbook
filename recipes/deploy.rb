@@ -20,4 +20,9 @@ node['deploy'].each do |application, deploy|
     deploy_data deploy
     app application
   end
+
+  # TODO: Use cap properly and kill the following with fire
+  bash 'copy to nginx www dir' do
+    code "cp -Rv #{deploy[:deploy_to]}/current/* #{node['lvsf_opsworks_php']['php_app_srv_dir']}"
+  end
 end
