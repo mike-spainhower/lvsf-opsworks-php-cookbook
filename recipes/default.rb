@@ -31,8 +31,9 @@ execute 'CGI Fix pathinfo' do
 end
 
 # setup nginx stuff
-directory '/usr/share/nginx/www' do
+directory node['lvsf_opsworks_php']['php_app_srv_dir']  do
   owner node['lvsf_opsworks_php']['nginx_user']
+  group node['lvsf_opsworks_php']['nginx_user']
   action :create
 end
 
@@ -55,7 +56,7 @@ end
 end
 
 # basic app for testing
-template '/usr/share/nginx/www/info.php' do
+template "#{node['lvsf_opsworks_php']['php_app_srv_dir']}/info.php" do
   source 'info.php.erb'
   owner node['lvsf_opsworks_php']['nginx_user']
   group node['lvsf_opsworks_php']['nginx_user']

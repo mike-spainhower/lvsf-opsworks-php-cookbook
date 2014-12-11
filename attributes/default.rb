@@ -8,4 +8,4 @@ pool_config['www']['listen.group'] = 'www-data'
 default['php_fpm']['pools'] = JSON.generate pool_config
 
 default['lvsf_opsworks_php']['nginx_user'] = 'www-data'
-default['lvsf_opsworks_php']['php_app_srv_dir'] = '/usr/share/nginx/www'
+default['lvsf_opsworks_php']['php_app_srv_dir'] = '/var/www'

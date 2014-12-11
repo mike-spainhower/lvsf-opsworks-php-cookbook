@@ -17,6 +17,6 @@ node['deploy_local'].each do |app_name, app_repo|
   end
 
   bash 'copy deploy code' do
-    code "cp -Rv /tmp/#{app_name}/* /usr/share/nginx/www/"
+    code "cp -Rv /tmp/#{app_name}/* #{node['lvsf_opsworks_php']['php_app_srv_dir']}"
   end
 end
