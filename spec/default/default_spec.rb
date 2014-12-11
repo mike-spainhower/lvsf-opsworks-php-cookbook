@@ -25,4 +25,11 @@ describe 'lvsf-opsworks-php-cookbook::default' do
   it 'should restart the php5-fpm service' do
     expect(chef_run).to restart_service 'php5-fpm'
   end
+
+  it 'should create services directory with correct permission' do
+    expect(chef_run).to create_directory('/var/www').with(
+      user:   'www-data',
+      group:  'www-data',
+    )
+  end
 end

@@ -17,6 +17,12 @@ describe file("#{SpecHelper.node['php_fpm']['base_path']}/php.ini") do
   its(:content) { should match '^cgi\.fix_pathinfo=0$' }
 end
 
+describe file('/var/www/') do
+  it { should be_directory }
+  it { should be_owned_by 'www-data' }
+  it { should be_grouped_into 'www-data' }
+end
+
 describe file('/var/run/php5-fpm.sock') do
   it { should be_socket }
   it { should be_owned_by 'www-data' }

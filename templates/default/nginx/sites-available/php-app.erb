@@ -15,7 +15,7 @@ server {
     error_page 500 502 503 504 /50x.html;
     
     location = /50x.html {
-        root /usr/share/nginx/www;
+        root <%= node['lvsf_opsworks_php']['php_app_srv_dir'] %>;
     }
     
     # pass the PHP scripts to FastCGI server listening on the php-fpm socket
