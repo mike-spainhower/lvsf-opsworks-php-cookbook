@@ -9,4 +9,4 @@ AllCops:
   Exclude:
     - 'Vagrantfile'
     - 'Thorfile'
-    - 'vendor'
+    - 'vendor/**/*'
