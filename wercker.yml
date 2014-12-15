@@ -24,7 +24,7 @@ build:
         # Berkshelf
         - script:
             name: berkshelf
-            code: berks install
+            code: bundle exec berks install
 
         # foodcritic (will be replaced with Strainer)
         - script:
