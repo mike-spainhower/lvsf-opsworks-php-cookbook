@@ -20,6 +20,9 @@ suites:
       # - recipe[lvsf-opsworks-php-cookbook::deploy_local]
     attributes:
       deploy_local:
+        lvsf_dashboard:
+          git_url: ''
+          git_rev: 'master'
         lvsf_php_services:
           git_url: ''
           git_rev: 'master'
