@@ -29,7 +29,7 @@ describe 'lvsf-opsworks-php-cookbook::default' do
   it 'should create services directory with correct permission' do
     expect(chef_run).to create_directory('/var/www').with(
       user:   'www-data',
-      group:  'www-data',
+      group:  'www-data'
     )
   end
 end
