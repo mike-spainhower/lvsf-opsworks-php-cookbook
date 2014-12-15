@@ -1,0 +1,9 @@
+language: ruby
+
+before_script:
+    - mkdir -p shippable/testresults
+
+script:
+    - bundle exec foodcritic -f any -t "~FC007" .
+    - bundle exec rubocop .
+    - rspec -f JUnit -o shippable/testresults/results.xml
