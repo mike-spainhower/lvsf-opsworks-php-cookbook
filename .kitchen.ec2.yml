@@ -1,0 +1,24 @@
+---
+driver:
+  name: ec2
+  ssh_key: <%= File.expand_path('~/.ssh/id_rsa') %>
+  require_chef_omnibus: true
+  iam_profile_name: 'chef-ci'
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list: 
+      - recipe[lvsf-opsworks-php-cookbook::default]
+      - recipe[test-helper::default]
+      # - recipe[lvsf-opsworks-php-cookbook::deploy_local]
+    attributes:
+      deploy_local:
+        lvsf_dashboard:
+          git_url: ''
+          git_rev: 'master'
+        lvsf_php_services:
+          git_url: ''
+          git_rev: 'master'
