@@ -18,6 +18,10 @@ describe 'lvsf-opsworks-php-cookbook::default' do
     expect(chef_run).to include_recipe 'nginx::default'
   end
 
+  it 'should add www-data to syslog group' do
+    expect(chef_run).to manage_group('syslog')
+  end
+
   it 'should restart the nginx service' do
     expect(chef_run).to restart_service 'nginx'
   end

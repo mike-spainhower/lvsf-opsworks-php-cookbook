@@ -11,6 +11,11 @@ describe service('php5-fpm') do
   it { should be_running }
 end
 
+# Users/groups
+describe user('www-data') do
+  it { should belong_to_group 'syslog' }
+end
+
 # Filesystem
 describe file("#{SpecHelper.node['php_fpm']['base_path']}/php.ini") do
   it { should be_file }
@@ -30,7 +35,6 @@ describe file('/var/run/php5-fpm.sock') do
 end
 
 # HTTP
-
 describe port(80) do
   it { should be_listening.with('tcp') }
 end
