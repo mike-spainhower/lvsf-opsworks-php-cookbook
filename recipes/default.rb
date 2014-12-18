@@ -23,6 +23,13 @@ include_recipe 'nginx'
   end
 end
 
+# User/group modifications
+group 'syslog' do
+  action :manage
+  append true
+  members [node['lvsf_opsworks_php']['nginx_user']]
+end
+
 # setup php fpm
 execute 'CGI Fix pathinfo' do
   command "sed 's/^;cgi\.fix_pathinfo=1$/cgi.fix_pathinfo=0/'"\
@@ -66,6 +73,7 @@ end
 # restart services
 service 'php5-fpm' do
   action :restart
+  notifies :restart, 'service[nginx]', :delayed
 end
 
 service 'nginx' do
