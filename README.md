@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/LiveSafe/lvsf-opsworks-php-cookbook.svg?style=svg)](https://circleci.com/gh/LiveSafe/lvsf-opsworks-php-cookbook)
+
 # lvsf-opsworks-php-cookbook
 
 Cookbook that brings up any of our PHP apps.
